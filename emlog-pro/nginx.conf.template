@@ -1,0 +1,26 @@
+server {
+    listen ${WEB_LISTEN};
+    server_name _;
+
+    root /var/www/html;
+    index index.php index.html;
+
+    # Emlog Pro 伪静态规则
+    location / {
+        if (!-e $request_filename) {
+            rewrite ^/(.*)$ /index.php?$1 last;
+        }
+    }
+
+    # 通过 Unix Socket 转发给 PHP-FPM
+    location ~ \.php$ {
+        fastcgi_pass   unix:/var/run/php-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    location ~ \.(htaccess|git|env) {
+        deny all;
+    }
+}
