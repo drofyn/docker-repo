@@ -1,0 +1,10 @@
+services:
+  emlog:
+    image: ghcr.io/drofyn/emlog-pro:latest
+    container_name: emlog
+    network_mode: host
+    restart: always
+    environment:
+      - WEB_LISTEN=127.0.0.1:10088
+    volumes:
+      - ./data:/var/www/html

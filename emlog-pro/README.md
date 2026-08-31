@@ -5,7 +5,7 @@
 ## 架构特性
 
 * **高性能 Socket 通信**：内部 Nginx 与 PHP-FPM 走 Unix Socket (`/var/run/php-fpm.sock`)，彻底抹去了容器内部对 TCP 9000 端口的依赖与暴露。
-* **自定义监听绑核**：支持通过 `WEB_LISTEN` 环境变量控制容器内 Nginx 绑定的 IP 和端口（如 `127.0.0.1:8080`），防止公网直接绕过宿主机反向代理直连。
+* **自定义监听绑核**：支持通过 `WEB_LISTEN` 环境变量控制容器内 Nginx 绑定的 IP 和端口（如 `127.0.0.1:80`），防止公网直接绕过宿主机反向代理直连。
 * **开箱即用自动释出**：镜像内自带源码压缩包。容器启动时会自动检查挂载目录，若为空则自动解压释放 Emlog Pro 全量源码文件并修正权限。
 * **安全加固**：内置 PHP 安全配置，禁用 `exec`, `system`, `passthru`, `shell_exec` 等高危命令执行函数（保留 `curl` 以确保商店与激活功能正常）。
 * **Alpine 极简体积**：基于 `php:7.4-fpm-alpine` 构建，集成必需的 GD、PDO_MySQL、mysqli、zip 扩展及 `ca-certificates` 根证书。
@@ -19,7 +19,7 @@
 
 | 环境变量名 | 默认值 | 说明 |
 | :--- | :--- | :--- |
-| `WEB_LISTEN` | `127.0.0.1:8080` | 容器内 Nginx 监听的 IP 与端口（支持 `IP:Port` 或纯 `Port`） |
+| `WEB_LISTEN` | `80` | 容器内 Nginx 监听的 IP 与端口（支持 `IP:Port` 或纯 `Port`） |
 
 ## 本地构建与推送指南
 

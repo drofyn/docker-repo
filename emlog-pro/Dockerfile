@@ -12,12 +12,6 @@ RUN apk add --no-cache \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) mysqli pdo_mysql gd zip
 
-# 修改 PHP-FPM 配置，使其使用 Unix Socket 通信，并与 Nginx 使用同一用户 www-data
-RUN sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/' /usr/local/etc/php-fpm.d/www.conf && \
-    sed -i 's/;listen.owner = www-data/listen.owner = www-data/' /usr/local/etc/php-fpm.d/www.conf && \
-    sed -i 's/;listen.group = www-data/listen.group = www-data/' /usr/local/etc/php-fpm.d/www.conf && \
-    sed -i 's/;listen.mode = 0660/listen.mode = 0660/' /usr/local/etc/php-fpm.d/www.conf
-
 # 彻底删掉官方默认的 zz-docker.conf（消除 9000 端口监听的根源）
 RUN rm -f /usr/local/etc/php-fpm.d/zz-docker.conf
 
@@ -39,6 +33,6 @@ COPY emlog_pro.zip /usr/src/emlog.zip
 RUN chmod +x /entrypoint.sh
 
 # 默认设置 Web 端口为 8080（可在 docker-compose 中修改）
-ENV WEB_LISTEN=8080
+ENV WEB_LISTEN=80
 
 ENTRYPOINT ["/entrypoint.sh"]
