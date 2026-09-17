@@ -32,7 +32,6 @@ COPY emlog_pro.zip /usr/src/emlog.zip
 
 RUN chmod +x /entrypoint.sh
 
-# 默认设置 Web 端口为 8080（可在 docker-compose 中修改）
 ENV WEB_LISTEN=80
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -30,7 +30,7 @@ docker build -t emlog-pro:latest .
 ```
 
 ### 2. 已构建的公共镜像
-docker pull ghcr.io/drofyn/emlog-pro:latest # 基于emlog-pro 2.6.28构建
+docker pull ghcr.io/drofyn/emlog-pro:latest # 基于emlog-pro 2.6.30构建
 
 ## 部署示例
 
