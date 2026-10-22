@@ -8,5 +8,5 @@
 
 | 容器项目 | 基础环境 | 核心定制点 | 说明文档 |
 | :--- | :--- | :--- | :--- |
-| **`emlog-pro`** | PHP 7.4-FPM + Nginx (Alpine) | 源码自动释出、安全加固、预设伪静态等配置，开箱即用 | [阅读文档](./emlog-pro/README.md) |
+| **`emlog-pro`** | PHP 8.2.35-FPM + Nginx (Alpine) | 源码自动释出、安全加固、预设伪静态等配置，开箱即用 | [阅读文档](./emlog-pro/README.md) |
 
