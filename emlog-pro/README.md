@@ -9,7 +9,7 @@
 * **预设伪静态等代码**: 镜像引入nginx做入口，除包装php-fpm通信外，就是构造了入口的静态文件等处理规则，屏蔽对外细节。
 * **开箱即用自动释出**：镜像内自带源码压缩包。容器启动时会自动检查挂载目录，若为空则自动解压释放 Emlog Pro 全量源码文件并修正权限。
 * **安全加固**：内置 PHP 安全配置，禁用 `exec`, `system`, `passthru`, `shell_exec` 等高危命令执行函数（保留 `curl` 以确保商店与激活功能正常）。
-* **Alpine 极简体积**：基于 `php:7.4-fpm-alpine` 构建，集成必需的 GD、PDO_MySQL、mysqli、zip 扩展及 `ca-certificates` 根证书。
+* **Alpine 极简体积**：基于 `php:8.2.35-fpm-alpine` 构建，集成必需的 GD、PDO_MySQL、mysqli、zip 扩展及 `ca-certificates` 根证书。
 
 ## 前置要求
 

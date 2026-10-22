@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.2.35-fpm-alpine
 
 # 安装 Nginx、unzip、gettext(提供 envsubst 命令) 以及 PHP 扩展依赖
 RUN apk add --no-cache \
