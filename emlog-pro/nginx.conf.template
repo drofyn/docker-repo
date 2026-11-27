@@ -1,5 +1,5 @@
 server {
-    listen ${WEB_LISTEN};
+    listen 0.0.0.0:80 default_server;
     server_name _;
 
     root /var/www/html;
@@ -14,7 +14,7 @@ server {
 
     # 通过 Unix Socket 转发给 PHP-FPM
     location ~ \.php$ {
-        fastcgi_pass   unix:/var/run/php-fpm.sock;
+        fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include        fastcgi_params;

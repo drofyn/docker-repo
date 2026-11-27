@@ -1,11 +1,8 @@
 services:
   emlog:
-    image: ghcr.io/drofyn/emlog-pro:latest
+    image: ghcr.io/drofyn/emlog-pro
     container_name: emlog
+    ports: [80:80]
     restart: always
-    ports:
-      - "80:80"
-    environment:
-      - WEB_LISTEN=127.0.0.1:80
     volumes:
       - ./data:/var/www/html
